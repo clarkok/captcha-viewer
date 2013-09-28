@@ -116,7 +116,7 @@ var	NUM_DATA	= [[
 [0,1,1,1,1,1,1,0],
 [0,0,1,1,1,1,0,0]
 ],[
-[0,0,1,1,1,1,0,0]
+[0,0,1,1,1,1,0,0],
 [0,1,1,1,1,1,1,0],
 [1,1,0,0,0,1,1,0],
 [1,1,0,0,0,0,1,1],
@@ -130,6 +130,59 @@ var	NUM_DATA	= [[
 [0,1,1,1,1,1,0,0]
 ]];
 
+var	NUM_SIZE	= [8, 12];
+
+var	NUM_POS_OFFSET	= [5, 5];
+
+var	IMG_START_POINT	= [0, 22];
+
+function	parse(cnt, x, y){
+	alert('('+x+','+y+')');
+	var	res	= -1;
+	var	similarity	= 0;
+	var	numData	= cnt.getImageData(x, y, NUM_SIZE[0], NUM_SIZE[1]);
+	cnt.putImageData(numData, 60, 0);
+
+	var	for_debug	= [
+	[0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0],
+	]
+	for (var i=0; i<10; i++){
+		var	tmpSimilarity	= 0;
+		for (var ox=0; ox<NUM_SIZE[0]; ox++){
+			for (var oy=0; oy<NUM_SIZE[1]; oy++){
+				var	idx	= (ox + oy*NUM_SIZE[0]) * 4;
+				for_debug[oy][ox]	= (numData.data[idx] == 0) ? 1 : 0;
+				if ((numData.data[idx] == 0) && NUM_DATA[i][oy][ox])
+					tmpSimilarity++;
+				if ((numData.data[idx] != 0) && !(NUM_DATA[i][oy][ox]))
+					tmpSimilarity++;
+			}
+		}
+		if (tmpSimilarity > similarity){
+			similarity	= tmpSimilarity;
+			res		= i;
+		}
+	}
+
+	for (var oy=0; oy<NUM_SIZE[1]; oy++){
+		var	str	= '(';
+		for (ox=0; ox<NUM_SIZE[0]; ox++){
+			str	+= for_debug[oy][ox]+',';
+		}
+	}
+	return	res;
+}
 
 function	main(){
 	var	cvs	= document.getElementById("main-cvs");
@@ -163,4 +216,8 @@ function	main(){
 	}
 
 	cnt.putImageData(canvasData, 0, 22);
+
+	for (var i=0; i<5; i++){
+		console.debug(parse(cnt, 9*i + IMG_START_POINT[0] + NUM_POS_OFFSET[0], IMG_START_POINT[1] + NUM_POS_OFFSET[1]));
+	}
 }
