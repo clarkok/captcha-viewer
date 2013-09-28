@@ -1,6 +1,6 @@
 captcha-viewer
 ===========================================================
 
-		用于获取浙江大学教务网中验证码的信息，同时作为Clarkok在QSC的十一作业。
+用于获取浙江大学教务网中验证码的信息，同时作为Clarkok在QSC的十一作业。
 
-		[浙江大学教务网](http://jwbinfosys.zju.edu.cn/)
+[浙江大学教务网](http://jwbinfosys.zju.edu.cn/)
