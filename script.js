@@ -21,9 +21,9 @@ function	main(){
 				canvasData.data[idx + 3]	= 255;
 			}
 			else{
-				canvasData.data[idx + 0]	= gray;
-				canvasData.data[idx + 1]	= gray;
-				canvasData.data[idx + 2]	= gray;
+				canvasData.data[idx + 0]	= 0;
+				canvasData.data[idx + 1]	= 0;
+				canvasData.data[idx + 2]	= 0;
 				canvasData.data[idx + 3]	= 255;
 			}
 		}
