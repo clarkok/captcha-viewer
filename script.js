@@ -137,7 +137,6 @@ var	NUM_POS_OFFSET	= [5, 5];
 var	IMG_START_POINT	= [0, 22];
 
 function	parse(cnt, x, y){
-	alert('('+x+','+y+')');
 	var	res	= -1;
 	var	similarity	= 0;
 	var	numData	= cnt.getImageData(x, y, NUM_SIZE[0], NUM_SIZE[1]);
