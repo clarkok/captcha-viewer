@@ -217,6 +217,9 @@ function	main(){
 	cnt.putImageData(canvasData, 0, 22);
 
 	for (var i=0; i<5; i++){
-		console.debug(parse(cnt, 9*i + IMG_START_POINT[0] + NUM_POS_OFFSET[0], IMG_START_POINT[1] + NUM_POS_OFFSET[1]));
+		var	res	= parse(cnt, 9*i + IMG_START_POINT[0] + NUM_POS_OFFSET[0], IMG_START_POINT[1] + NUM_POS_OFFSET[1]);
+		console.debug(res);
+		document.getElementById('main-res').innerHTML	+= res;
+		
 	}
 }

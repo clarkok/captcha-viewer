@@ -93,6 +93,7 @@ function	parseNum(/*cnt, x, y*/ numData){
 	return	res;
 }
 
+// 图像黑白化
 function	grayImage(cnt){
 	var	canvasData	= cnt.getImageData(0, 0, 60, 22);
 	
@@ -162,4 +163,4 @@ function	main(){
 	}
 }
 
-main();
+exports.parse	= main;
